@@ -1,0 +1,12 @@
+{
+  "http_listen": "127.0.0.1:3000",
+  "data_root": "/var/lib/web-controller/data",
+  "maintenance_root": "/var/lib/web-controller/maintenance",
+  "backup_root": "/var/lib/web-controller/backups",
+  "trash_root": "/var/lib/web-controller/trash",
+  "trash_retention_days": 30,
+  "software_root": "/opt/web-controller/current",
+  "web_root": "/opt/web-controller/current/web",
+  "socket_path": "/run/web-controller/controller-daemon.sock",
+  "pico_serial_path": "/dev/serial/by-id/CHANGE_ME"
+}

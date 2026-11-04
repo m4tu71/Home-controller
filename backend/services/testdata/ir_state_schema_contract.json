@@ -1,0 +1,345 @@
+{
+  "air_conditioner": {
+    "schema": {
+      "power": {
+        "type": "enum",
+        "values": [
+          "on",
+          "off"
+        ],
+        "label": "電源"
+      },
+      "mode": {
+        "type": "enum",
+        "values": [
+          "cool",
+          "heat",
+          "dry",
+          "fan",
+          "auto"
+        ],
+        "label": "運転モード"
+      },
+      "target_temperature": {
+        "type": "number",
+        "presence": "absent",
+        "label": "設定温度",
+        "unit": "℃",
+        "cases": [
+          {
+            "when": {
+              "all": [
+                {
+                  "field": "power",
+                  "in": [
+                    "on"
+                  ]
+                },
+                {
+                  "field": "mode",
+                  "in": [
+                    "cool",
+                    "heat"
+                  ]
+                }
+              ]
+            },
+            "presence": "required",
+            "min": 14,
+            "max": 30
+          }
+        ]
+      },
+      "dry_adjustment": {
+        "type": "number",
+        "presence": "absent",
+        "label": "ドライ補正",
+        "cases": [
+          {
+            "when": {
+              "all": [
+                {
+                  "field": "power",
+                  "in": [
+                    "on"
+                  ]
+                },
+                {
+                  "field": "mode",
+                  "in": [
+                    "dry"
+                  ]
+                }
+              ]
+            },
+            "presence": "required",
+            "min": -2,
+            "max": 2
+          }
+        ]
+      }
+    },
+    "states": [
+      {
+        "value": {
+          "power": "on",
+          "mode": "fan"
+        },
+        "valid": true
+      },
+      {
+        "value": {
+          "power": "on",
+          "mode": "fan",
+          "target_temperature": 14
+        },
+        "valid": false,
+        "code": "absent"
+      },
+      {
+        "value": {
+          "power": "on",
+          "mode": "dry",
+          "dry_adjustment": -2
+        },
+        "valid": true
+      },
+      {
+        "value": {
+          "power": "on",
+          "mode": "dry",
+          "dry_adjustment": 0
+        },
+        "valid": true
+      },
+      {
+        "value": {
+          "power": "on",
+          "mode": "dry",
+          "dry_adjustment": 2
+        },
+        "valid": true
+      },
+      {
+        "value": {
+          "power": "on",
+          "mode": "dry",
+          "dry_adjustment": -3
+        },
+        "valid": false,
+        "code": "range"
+      },
+      {
+        "value": {
+          "power": "on",
+          "mode": "dry",
+          "dry_adjustment": 3
+        },
+        "valid": false,
+        "code": "range"
+      },
+      {
+        "value": {
+          "power": "on",
+          "mode": "cool",
+          "target_temperature": 14
+        },
+        "valid": true
+      },
+      {
+        "value": {
+          "power": "on",
+          "mode": "cool",
+          "target_temperature": 30
+        },
+        "valid": true
+      },
+      {
+        "value": {
+          "power": "on",
+          "mode": "heat",
+          "target_temperature": 14
+        },
+        "valid": true
+      },
+      {
+        "value": {
+          "power": "on",
+          "mode": "heat",
+          "target_temperature": 30
+        },
+        "valid": true
+      },
+      {
+        "value": {
+          "power": "on",
+          "mode": "cool",
+          "target_temperature": 13
+        },
+        "valid": false,
+        "code": "range"
+      },
+      {
+        "value": {
+          "power": "on",
+          "mode": "dry",
+          "dry_adjustment": 0,
+          "target_temperature": 20
+        },
+        "valid": false,
+        "code": "absent"
+      },
+      {
+        "value": {
+          "power": "on",
+          "mode": "cool"
+        },
+        "valid": false,
+        "code": "required"
+      }
+    ]
+  },
+  "non_air_conditioner": {
+    "schema": {
+      "enabled": {
+        "type": "boolean",
+        "label": "動作"
+      },
+      "profile": {
+        "type": "enum",
+        "values": [
+          "normal",
+          "boost"
+        ]
+      },
+      "level": {
+        "type": "number",
+        "presence": "absent",
+        "cases": [
+          {
+            "when": {
+              "all": [
+                {
+                  "field": "enabled",
+                  "in": [
+                    true
+                  ]
+                },
+                {
+                  "field": "profile",
+                  "in": [
+                    "normal"
+                  ]
+                }
+              ]
+            },
+            "presence": "required",
+            "min": 0,
+            "max": 5,
+            "step": 1
+          },
+          {
+            "when": {
+              "all": [
+                {
+                  "field": "enabled",
+                  "in": [
+                    true
+                  ]
+                },
+                {
+                  "field": "profile",
+                  "in": [
+                    "boost"
+                  ]
+                }
+              ]
+            },
+            "presence": "required",
+            "min": 6,
+            "max": 10,
+            "step": 1
+          }
+        ]
+      },
+      "eco": {
+        "type": "boolean",
+        "presence": "optional"
+      },
+      "note": {
+        "type": "string",
+        "presence": "optional",
+        "allow_empty": false
+      }
+    },
+    "states": [
+      {
+        "value": {
+          "enabled": false,
+          "profile": "normal"
+        },
+        "valid": true
+      },
+      {
+        "value": {
+          "enabled": true,
+          "profile": "normal",
+          "level": 0,
+          "eco": false
+        },
+        "valid": true
+      },
+      {
+        "value": {
+          "enabled": true,
+          "profile": "boost",
+          "level": 6
+        },
+        "valid": true
+      },
+      {
+        "value": {
+          "enabled": false,
+          "profile": "normal",
+          "level": 0
+        },
+        "valid": false,
+        "code": "absent"
+      },
+      {
+        "value": {
+          "enabled": true,
+          "profile": "normal"
+        },
+        "valid": false,
+        "code": "required"
+      },
+      {
+        "value": {
+          "enabled": true,
+          "profile": "boost",
+          "level": 5
+        },
+        "valid": false,
+        "code": "range"
+      },
+      {
+        "value": {
+          "enabled": false,
+          "profile": "normal",
+          "note": ""
+        },
+        "valid": false,
+        "code": "empty"
+      },
+      {
+        "value": {
+          "enabled": "false",
+          "profile": "normal"
+        },
+        "valid": false,
+        "code": "type"
+      }
+    ]
+  }
+}

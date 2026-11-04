@@ -1,0 +1,27 @@
+[Unit]
+Description=Home Controller Pico Serial Daemon
+After=local-fs.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=web-controller
+Group=web-controller
+SupplementaryGroups=dialout
+WorkingDirectory=/opt/web-controller/current
+ExecStart=/opt/web-controller/current/bin/controller-daemon --config /etc/web-controller/config.json
+UnsetEnvironment=WEB_CONTROLLER_MAINTENANCE_STATE_DIR WEB_CONTROLLER_BACKUP_DIR WEB_CONTROLLER_TRASH_DIR WEB_CONTROLLER_TRASH_RETENTION_DAYS
+RuntimeDirectory=web-controller
+RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=restart
+UMask=0077
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

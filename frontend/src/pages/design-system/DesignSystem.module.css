@@ -1,0 +1,83 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.title {
+  font-size: var(--font-size-xl);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.colorGrid {
+  display: flex;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.colorBox {
+  width: 120px;
+  height: 80px;
+
+  border:
+    1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+}
+
+.radiusGrid {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.radiusSm,
+.radiusMd {
+  width: 160px;
+  padding: var(--spacing-lg);
+
+  border:
+    1px solid var(--color-border);
+
+  background: var(--color-surface);
+}
+
+.radiusSm {
+  border-radius: var(--radius-sm);
+}
+
+.radiusMd {
+  border-radius: var(--radius-md);
+}
+
+.shadowCard {
+  width: 240px;
+
+  padding: var(--spacing-lg);
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-surface);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.fontSm {
+  font-size: var(--font-size-sm);
+}
+
+.fontMd {
+  font-size: var(--font-size-md);
+}
+
+.fontLg {
+  font-size: var(--font-size-lg);
+}
+
+.fontXl {
+  font-size: var(--font-size-xl);
+}

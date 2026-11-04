@@ -1,0 +1,24 @@
+[Unit]
+Description=Home Controller Backend
+Wants=web-controller-daemon.service
+After=network.target web-controller-daemon.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=web-controller
+Group=web-controller
+WorkingDirectory=/opt/web-controller/current
+ExecStart=/opt/web-controller/current/bin/backend --config /etc/web-controller/config.json
+UnsetEnvironment=WEB_CONTROLLER_MAINTENANCE_STATE_DIR WEB_CONTROLLER_BACKUP_DIR WEB_CONTROLLER_TRASH_DIR WEB_CONTROLLER_TRASH_RETENTION_DAYS
+UMask=0077
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
