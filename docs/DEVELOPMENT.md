@@ -32,6 +32,11 @@ Manual only（依存treeを準備する場合。lockに従い、既存node_modul
 
 npm ciはpackage/lockの不一致を拒否し、network/cacheとlifecycle scriptを使用します。依存versionの更新にはnpm install等の別作業が必要です。失敗をaudit fix --forceやlock書換えで回避しません。
 
+開発用のESLint関連依存には、`minimatch@10`を`11.0.1`へ固定するnpm `overrides`を設定しています。
+[GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249)への対処で、実行時依存は変更しません。
+11系にはAPI変更があるため、依存元が対応する版へ更新できた際にこのoverrideの撤去を検討します。
+変更時は監査に加え、lintの対象file/結果、Frontend testとbuildを確認してください。
+
 AI may run（有限実行）:
 
 ```bash

@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { readAppVersion } from './build/version'
+import { readAppVersion } from './build/version.ts'
 import { resolve } from 'node:path'
 
-const appVersion = readAppVersion(resolve(__dirname, '..'))
+const appVersion = readAppVersion(resolve(import.meta.dirname, '..'))
 
 // https://vite.dev/config/
 export default defineConfig({
