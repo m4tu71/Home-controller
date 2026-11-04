@@ -1,0 +1,77 @@
+# Local artifacts, runtime data and configuration (repository root only)
+/.artifacts/
+/data/
+/config.json
+/config.local.json
+/.local/
+
+# Environment files; keep public templates available at any depth
+.env
+.env.*
+*.env
+!.env.example
+!.env.*.example
+!*.example.env
+
+# JavaScript dependencies and frontend outputs
+node_modules/
+/frontend/dist/
+/frontend/dist-ssr/
+/frontend/*.tsbuildinfo
+
+# Go executables
+/backend/backend
+/controller-daemon/controller-daemon
+
+# Known Pico CMake build directories and exported firmware at project roots.
+# Keep handwritten Makefiles, CMake configuration and nested test fixtures visible.
+/pico-firmware/**/build/
+/pico-firmware/**/build-host-tests/
+/pico-firmware/*/*.uf2
+/pico-firmware/*/*.elf
+/pico-firmware/*/*.bin
+/pico-firmware/*/*.hex
+/pico-firmware/*/*.dis
+/pico-firmware/*/*.map
+
+# Python bytecode, virtual environments and tool caches
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+/venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+
+# Logs
+/logs/
+/frontend/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS metadata and personal editor settings
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.suo
+
+# Temporary editor files
+*.swp
+*.swo
+*~
+.#*
+\#*#
