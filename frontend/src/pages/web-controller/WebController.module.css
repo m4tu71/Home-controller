@@ -1,0 +1,1113 @@
+.page {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.maintenanceArea,
+.dataHealthSection,
+.migrationSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.pageGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  min-width: 0;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.pageGroup > .deviceTitle {
+  margin: 0;
+}
+
+.migrationForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.migrationFields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.migrationFields > legend {
+  margin-bottom: var(--spacing-sm);
+  font-weight: bold;
+}
+
+.migrationMappingList,
+.migrationPlanActions {
+  display: grid;
+  gap: var(--spacing-md);
+
+  margin: 0;
+  padding-left: var(--spacing-lg);
+}
+
+.migrationMapping {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  min-width: 0;
+  margin: 0;
+  padding: var(--spacing-md);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.migrationMapping legend {
+  padding: 0 var(--spacing-xs);
+  font-weight: bold;
+}
+
+.migrationProvisioning {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+
+  min-width: 0;
+  margin: 0;
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.migrationProvisioning legend {
+  padding: 0 var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+}
+
+.migrationCheckbox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+.migrationPlan {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  min-width: 0;
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.migrationStage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  min-width: 0;
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+}
+
+.migrationActionChoices {
+  display: grid;
+  gap: var(--spacing-sm);
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.migrationPlanMeta {
+  display: grid;
+  gap: var(--spacing-sm);
+  margin: 0;
+}
+
+.migrationPlanMeta div {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: var(--spacing-sm);
+}
+
+.migrationPlanMeta dt {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.migrationPlanMeta dd {
+  min-width: 0;
+  margin: 0;
+  font-size: var(--font-size-sm);
+  overflow-wrap: anywhere;
+}
+
+.migrationPathList {
+  margin: 0;
+  padding-left: var(--spacing-lg);
+}
+
+.migrationDecisionList {
+  display: grid;
+  gap: var(--spacing-xs);
+  margin: 0;
+  padding-left: var(--spacing-lg);
+}
+
+.migrationWriteContent {
+  max-width: 100%;
+  margin: var(--spacing-xs) 0 var(--spacing-sm);
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.planReady,
+.planPending {
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+}
+
+.planReady {
+  color: var(--color-success, var(--color-text));
+}
+
+.planPending {
+  color: var(--color-warning, var(--color-text));
+}
+
+.maintenanceDescription {
+  margin: 0;
+
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.dataHealthList {
+  display: grid;
+  gap: var(--spacing-sm);
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dataHealthMeta {
+  display: grid;
+  gap: var(--spacing-sm);
+
+  margin: 0;
+}
+
+.dataHealthMeta div {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: var(--spacing-sm);
+}
+
+.dataHealthMeta dt {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.dataHealthMeta dd {
+  min-width: 0;
+  margin: 0;
+
+  font-size: var(--font-size-sm);
+  overflow-wrap: anywhere;
+}
+
+.panel {
+  max-width: 640px;
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  padding: var(--spacing-lg);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+
+  margin-bottom: var(--spacing-lg);
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  margin: 0;
+}
+
+.header > .label,
+.header > .description {
+  margin: 0;
+}
+
+.description {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-md);
+  margin-bottom: 0;
+}
+
+.badge {
+  padding: var(--spacing-xs) var(--spacing-sm);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-sm);
+  font-family: Consolas, monospace;
+}
+
+.roomStatusBlock {
+  margin-bottom: var(--spacing-md);
+}
+
+.roomTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+
+  margin-bottom: var(--spacing-md);
+}
+
+.roomTab {
+  min-height: 44px;
+}
+
+.roomTabActive {
+  border-color: var(--color-primary);
+
+  background: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.roomTabActive:hover {
+  border-color: var(--color-primary-hover);
+
+  background: var(--color-primary-hover);
+}
+
+.roomEmptyState {
+  margin-bottom: var(--spacing-md);
+
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.roomCreateForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  margin-bottom: var(--spacing-md);
+}
+
+.roomEditForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  margin-bottom: var(--spacing-md);
+}
+
+.deviceForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.deviceSubForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.irConfigForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  margin-top: var(--spacing-md);
+}
+
+.irStateSchemaForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  margin-top: var(--spacing-md);
+}
+
+.schemaFormHeader,
+.schemaFieldHeader,
+.schemaFormActions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.schemaTemplateActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+}
+
+.schemaTemplateActions .select {
+  min-width: 160px;
+}
+
+.schemaFieldList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.schemaField,
+.irStateSchemaGuidance {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  padding: var(--spacing-md);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-bg);
+}
+
+.schemaFormActions {
+  align-items: center;
+}
+
+.schemaFieldError {
+  margin: 0;
+
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+}
+
+.deviceForm + .roomDeletePanel {
+  margin-top: var(--spacing-md);
+}
+
+.formTitle {
+  margin: 0;
+
+  font-size: var(--font-size-md);
+}
+
+.roomDeletePanel {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+
+  padding: var(--spacing-md);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-bg);
+}
+
+.roomFormActions {
+  display: flex;
+  align-items: flex-end;
+}
+
+.pageLinks,
+.sectionHeaderActions,
+.deviceCardHeaderActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.pageLinks > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.primaryButton {
+  border-color: var(--color-primary);
+
+  background: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.primaryButton:hover {
+  border-color: var(--color-primary-hover);
+
+  background: var(--color-primary-hover);
+}
+
+.dangerButton {
+  flex-shrink: 0;
+
+  border-color: var(--color-border);
+
+  background: var(--color-surface);
+  color: var(--color-danger);
+
+  font-weight: bold;
+}
+
+.dangerButton:hover {
+  border-color: var(--color-danger);
+
+  background: var(--color-surface);
+}
+
+.dangerButton:disabled,
+.dangerButton:disabled:hover {
+  border-color: var(--color-border);
+
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.helperText {
+  margin: 0;
+
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.warningText {
+  margin: 0 0 var(--spacing-xs);
+
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+}
+
+.readOnlyValue {
+  min-height: 36px;
+  padding: var(--spacing-sm) var(--spacing-md);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-bg);
+  color: var(--color-text);
+
+  font-family: Consolas, monospace;
+}
+
+.roomStatusGrid {
+  display: grid;
+  grid-template-columns: minmax(100px, auto) minmax(0, 1fr);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  margin-bottom: var(--spacing-md);
+
+  overflow: hidden;
+}
+
+.deviceBlock {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  padding: var(--spacing-md);
+
+  background: var(--color-surface);
+}
+
+.deviceTitle {
+  font-size: var(--font-size-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.deviceHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--spacing-md);
+}
+
+.deviceList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: var(--spacing-sm);
+}
+
+.irOperationButtons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+  gap: var(--spacing-sm);
+}
+
+.irCommandButtons {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+}
+
+.irOperationOption {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-xs);
+}
+
+.irCommandOption {
+  display: block;
+}
+
+.irCommandOption .irOperationButton {
+  min-width: 0;
+  min-height: 112px;
+  padding-right: calc(var(--spacing-md) + 52px);
+}
+
+.deviceCard {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  padding: var(--spacing-md);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  background: var(--color-surface);
+}
+
+.deviceCardSelected {
+  border-color: var(--color-primary);
+}
+
+.irCommandCard {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  padding: var(--spacing-md);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  background: var(--color-surface);
+}
+
+.irStateCard {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  padding: var(--spacing-md);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  background: var(--color-surface);
+}
+
+.irOperationButton {
+  width: 100%;
+  flex: 1;
+  min-width: 0;
+  min-height: 76px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.irOperationButton:hover,
+.irOperationButtonSelected {
+  border-color: var(--color-primary);
+}
+
+.irOperationButtonSelected {
+  background: var(--color-bg);
+}
+
+.irOperationButton:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.irOperationButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.irOperationName {
+  font-weight: 700;
+}
+
+.irOperationMeta,
+.irOperationAvailability {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  overflow-wrap: anywhere;
+}
+
+.irOperationAvailability {
+  color: var(--color-text);
+}
+
+.irStateBadgeList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--spacing-xs);
+}
+
+.irCommandCapturePanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-bg);
+}
+
+.irCommandSendPanel,
+.irCommandUnsupportedPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-bg);
+}
+
+.irStateUnsupportedPanel,
+.irStateGuidance {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-bg);
+}
+
+.irStateCapturePanel,
+.irStateSendPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  background: var(--color-bg);
+}
+
+.deviceCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.deviceCardHeader > div:first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.deviceCardHeaderActions {
+  margin-left: auto;
+  gap: var(--spacing-sm);
+}
+
+.deviceCardTitle {
+  margin-bottom: var(--spacing-xs);
+
+  font-size: var(--font-size-md);
+  font-weight: bold;
+}
+
+.deviceMetaGrid {
+  display: grid;
+  gap: var(--spacing-sm);
+
+  margin: 0;
+}
+
+.deviceMetaGrid div {
+  display: grid;
+  grid-template-columns: minmax(0, 92px) minmax(0, 1fr);
+  gap: var(--spacing-sm);
+}
+
+.deviceMetaGrid dt {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.deviceMetaGrid dd {
+  min-width: 0;
+  margin: 0;
+
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  overflow-wrap: anywhere;
+}
+
+.irCommandMetaGrid {
+  display: grid;
+  gap: var(--spacing-sm);
+
+  margin: 0;
+}
+
+.irStateMetaGrid {
+  display: grid;
+  gap: var(--spacing-sm);
+
+  margin: 0;
+}
+
+.irStateMetaGrid div {
+  display: grid;
+  grid-template-columns: minmax(0, 92px) minmax(0, 1fr);
+  gap: var(--spacing-sm);
+}
+
+.irStateMetaGrid dt {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.irStateMetaGrid dd {
+  min-width: 0;
+  margin: 0;
+
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  overflow-wrap: anywhere;
+}
+
+.irCommandMetaGrid div {
+  display: grid;
+  grid-template-columns: minmax(0, 92px) minmax(0, 1fr);
+  gap: var(--spacing-sm);
+}
+
+.irCommandMetaGrid dt {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.irCommandMetaGrid dd {
+  min-width: 0;
+  margin: 0;
+
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  overflow-wrap: anywhere;
+}
+
+
+.deviceCardActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.statusLabel {
+  padding: var(--spacing-sm) var(--spacing-md);
+
+  background: var(--color-bg);
+  border-right: 1px solid var(--color-border);
+
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.statusValue {
+  min-width: 0;
+  padding: var(--spacing-sm) var(--spacing-md);
+
+  font-family: Consolas, monospace;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+.statusButton {
+  flex-shrink: 0;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+}
+
+.button {
+  min-height: 44px;
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.info {
+  margin-top: var(--spacing-md);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.error {
+  margin-top: var(--spacing-md);
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  overflow-wrap: anywhere;
+}
+
+.info,
+.roomEmptyState,
+.helperText,
+.readOnlyValue,
+.badge {
+  overflow-wrap: anywhere;
+}
+
+.deviceBlock + .deviceBlock {
+  margin-top: var(--spacing-md);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-md);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--font-size-md);
+}
+
+.textarea {
+  min-height: 7rem;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--spacing-md) 0;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: var(--spacing-md);
+  }
+
+  .pageGroup,
+  .maintenanceArea,
+  .dataHealthSection,
+  .migrationSection,
+  .roomStatusBlock,
+  .deviceBlock {
+    padding: var(--spacing-md);
+  }
+
+  .roomStatusGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .roomStatusGrid .statusLabel {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .roomFormActions {
+    align-items: stretch;
+  }
+
+  .primaryButton {
+    width: 100%;
+  }
+
+  .roomDeletePanel {
+    flex-direction: column;
+  }
+
+  .dangerButton {
+    width: 100%;
+  }
+
+  .deviceHeader {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .statusButton {
+    width: 100%;
+  }
+
+  .deviceCardHeader {
+    flex-wrap: nowrap;
+    gap: var(--spacing-sm);
+  }
+
+  .deviceCardHeaderActions {
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-left: auto;
+  }
+
+  .schemaFormHeader,
+  .schemaFieldHeader,
+  .schemaFormActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .deviceMetaGrid div {
+    grid-template-columns: 1fr;
+  }
+
+  .dataHealthMeta div {
+    grid-template-columns: 1fr;
+  }
+
+  .migrationPlanMeta div {
+    grid-template-columns: 1fr;
+  }
+
+  .irCommandMetaGrid div {
+    grid-template-columns: 1fr;
+  }
+
+  .irStateMetaGrid div {
+    grid-template-columns: 1fr;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .schemaTemplateActions,
+  .schemaTemplateActions .select {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+
+/* Keep each enum candidate, including its delete action, on one compact row. */
+.schemaEnumRow {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--spacing-sm);
+  max-width: 36rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.schemaEnumRow .statusButton {
+  padding: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+.schemaDisplayDetails summary {
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+}
+
+.schemaDisplayDetails .formGroup {
+  margin-top: var(--spacing-sm);
+}
+
+.schemaSetupSteps {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
