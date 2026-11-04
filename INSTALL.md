@@ -6,11 +6,12 @@
 
 | 候補・確認日 | OS / architecture | 確認範囲 |
 |---|---|---|
+| 新リポジトリ候補e7318de / 2026-11-04 | Linux amd64・arm64 | clean build/梱包・ELF/UF2検査・checksum照合。amd64隔離smokeとoffline設置設定検査成功。実設置/Browser/家電は未確認、arm64実行再検証は対象外 |
 | 更新候補020c35b / 2026-11-02 | Ubuntu 24.04.5 LTS / amd64 | WSL2の独立fixture・切替/復旧回帰、本番hostの新配置/health・サービス再起動後API/画面・採用実機 |
 | 更新候補020c35b | Linux arm64 | build/梱包のみ。実行再検証は今回は対象外・未検証 |
 | 旧候補cdd7ca2 / 2026-10-20 | Ubuntu 24.04.5 LTS / amd64・arm64、Ubuntu 26.04.1 LTS / amd64 | archiveからの新規設置・Picoなし起動・非送信CRUD/削除/保守読取り・サービス再起動後readback |
 
-旧候補のarm64/Ubuntu 26.04の成功を更新候補の検証済み表示に流用しません。他distribution・未確認kernelの動作も保証しません。文書を更新して再梱包した場合、binary/web/UF2の一致と設定例の整合を再検査し、archiveのchecksumはその梱包に対応するSHA256SUMSを使用します。新しい公開commitからのbuild・梱包・検証とRelease公開は未実施で、公開は別の承認です。
+旧候補のarm64/Ubuntu 26.04の成功を更新候補の検証済み表示に流用しません。他distribution・未確認kernelの動作も保証しません。文書を更新して再梱包した場合、binary/web/UF2の一致と設定例の整合を再検査し、archiveのchecksumはその梱包に対応するSHA256SUMSを使用します。新リポジトリ候補e7318deのbuild・梱包・ローカル検証は完了しました。公開対象の最終commit/tagとRelease公開は未確定です。本手順の今回の文書更新はe7318deのarchiveには未反映であり、更新後の梱包入力の照合・再梱包が必要です。公開は別の承認です。
 
 対象PicoはPico 2 H（build board名pico2）。IR用の送受信回路が必要。RAW送信は現行38kHzのみ。UF2の書込み・家電の動作確認はManual only。Picoなしでもdaemon/Backendと通常APIは起動できるが、controller healthの成功やIR操作は保証しない。
 

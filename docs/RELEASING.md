@@ -1,6 +1,6 @@
 # Releasing
 
-clean commitからのbuild・検査・梱包・checksum・候補確認・公開判断を扱います。現在のReleaseは未公開で、新リポジトリのcommitからのbuild/梱包/公開は別工程です。過去候補の成功report・checksumを新候補の結果に読み替えません。
+clean commitからのbuild・検査・梱包・checksum・候補確認・公開判断を扱います。現在のReleaseは未公開です。新リポジトリ候補e7318deのclean build/梱包・ローカル検証は完了し、候補ごとの結果と残件は[v1.0.0 Release notes](releases/v1.0.0.md)に記載しています。公開対象の最終commit/tagと公開判断は未確定です。過去候補の成功report・checksumを新候補の結果に読み替えません。
 
 開発環境は[DEVELOPMENT](DEVELOPMENT.md)、配布物からの設置・更新・復旧は[INSTALL](../INSTALL.md)が正本です。各architectureのbuild成功、OS上の実行、Browser、Pico書込み、家電反応、公開承認を別々に記録します。
 
