@@ -1,6 +1,6 @@
 # Releasing
 
-clean commitからのbuild・検査・梱包・checksum・候補確認・公開判断を扱います。現在のReleaseは未公開です。新リポジトリ候補e7318deのclean build/梱包・ローカル検証は完了し、候補ごとの結果と残件は[v1.0.0 Release notes](releases/v1.0.0.md)に記載しています。公開対象の最終commit/tagと公開判断は未確定です。過去候補の成功report・checksumを新候補の結果に読み替えません。
+clean commitからのbuild・検査・梱包・checksum・候補確認・公開判断を扱います。v1.0.0はRelease公開済みです。現在準備中の[v1.0.1 Release notes](releases/v1.0.1.md)に変更点・検証範囲と残件を記載し、正式候補のcommit/tagと公開判断は別途確定します。v1.0.0の結果は[旧Release notes](releases/v1.0.0.md)を参照してください。過去候補の成功report・checksumを新候補の結果に読み替えません。
 
 開発環境は[DEVELOPMENT](DEVELOPMENT.md)、配布物からの設置・更新・復旧は[INSTALL](../INSTALL.md)が正本です。各architectureのbuild成功、OS上の実行、Browser、Pico書込み、家電反応、公開承認を別々に記録します。
 
@@ -39,6 +39,8 @@ python3 tools/release/build.py --require-clean --install-deps --output .artifact
 生成物はVERSION、linux-amd64/binとlinux-arm64/binのbackend/controller-daemon、共通web、firmware/web-controller-pico2h-vVERSION.uf2です。build-report.json、source-manifest.json、source.patch、source/logs/pico-host/pico-build等は監査用で、丸ごと配布しません。
 
 build-reportのbuild_passed、dirty、git_head、dependency_mode、各command/exit code、toolchain、成果物hashを確認します。失敗時は出力とlogsを保持し、原因修正後に新出力で再実行します。build成功で実機/設置/公開の合否を推定しません。
+
+配布候補は[DEVELOPMENTのGo検査](DEVELOPMENT.md#goの確認とbuild)に従い、配布するOS/archのsourceと生成binaryをgovulncheckで確認します。使用Go版・scanner版・検査日と結果を候補に対応付けて保存し、npm監査0件をGoの安全性へ読み替えません。公開済みのtagや添付物を更新する場合は別の版・候補として扱い、同じ名前のassetを黙って差し替えません。
 
 ## 梱包と第三者notice
 
@@ -98,7 +100,7 @@ release-rootとoutputは現行toolが要求するprojectの.artifacts内、nativ
 
 記録には候補commit/build/梱包commit、全asset/checksum、OS/kernel/arch、toolchain、実行範囲、報告者と直接照合の区別、未検証事項・error/残件を残します。現候補arm64の実行再検証なし、heat/dry等の範囲は[README](../README.md#制約と確認範囲)を維持し、旧候補の結果で埋めません。文書整理のために追加実機試験を要求しません。
 
-候補の機能・検証範囲・既知制約は[v1.0.0 Release notes](releases/v1.0.0.md)へ集約します。
+候補の機能・検証範囲・既知制約は[v1.0.1 Release notes](releases/v1.0.1.md)へ集約します。
 
 ## 公開前の判断と公開後の照合
 

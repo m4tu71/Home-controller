@@ -4,7 +4,7 @@
 
 ## 現在地と直近の範囲
 
-v1.0.0候補にはRoom / Device / IR Adapter、4形式のIR操作、条件付きStateful Schema、Maintenance、標準配置と配布物作成の基盤があります。Release公開は未実施です。公開時は移管後のcommit・asset・checksum・版・noticeと確認範囲を対応付け、公開判断を別に行います。過去候補の実績や未検証範囲は[READMEの確認範囲](README.md#制約と確認範囲)を参照してください。
+v1.0.0にはRoom / Device / IR Adapter、4形式のIR操作、条件付きStateful Schema、Maintenance、標準配置と配布物作成の基盤があり、Release公開済みです。現在はGo更新を含む[v1.0.1候補](docs/releases/v1.0.1.md)を準備しています。公開時は移管後のcommit・asset・checksum・版・noticeと確認範囲を対応付け、公開判断を別に行います。過去候補の実績や未検証範囲は[READMEの確認範囲](README.md#制約と確認範囲)を参照してください。
 
 直近は公開文書の正本と参照関係を整え、その後にtoolsの整理・移管、新リポジトリのcommitからのbuild・梱包・検証を行います。現在未検証のarm64再実行やheat/dry運転を、文書整理の完了条件に追加しません。旧Trashの物理最終削除は保持期限と別確認を要する独立した運用判断です。
 

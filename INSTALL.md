@@ -1,23 +1,24 @@
-# Home Controller v1.0.0 設置・更新手順
+# Home Controller v1.0.1 設置・更新手順
 
 ## 対象・検証状態
 
-現候補の標準配置はLinux向けのsystemd/Nginx構成です。検証結果は候補ごとに区別します。
+本手順はv1.0.1候補の標準配置を扱います。候補5c173ceでclean build/梱包・監査とamd64隔離smokeまで確認しました。標準配置はLinux向けのsystemd/Nginx構成です。候補ごとの結果を区別し、生成・隔離検証を実設置や実機成功へ読み替えません。
 
 | 候補・確認日 | OS / architecture | 確認範囲 |
 |---|---|---|
-| 新リポジトリ候補e7318de / 2026-11-04 | Linux amd64・arm64 | clean build/梱包・ELF/UF2検査・checksum照合。amd64隔離smokeとoffline設置設定検査成功。実設置/Browser/家電は未確認、arm64実行再検証は対象外 |
+| v1.0.1候補5c173ce / 2026-11-05 | Linux amd64・arm64 | clean build/梱包・ELF/UF2・checksum、Go source/binary監査、設置設定検査成功。amd64隔離smoke6項目成功。実設置/Browser/家電は未確認、arm64実行再検証は対象外 |
+| v1.0.0候補e7318de / 2026-11-04 | Linux amd64・arm64 | clean build/梱包・ELF/UF2検査・checksum照合。amd64隔離smokeとoffline設置設定検査成功。実設置/Browser/家電は未確認、arm64実行再検証は対象外 |
 | 更新候補020c35b / 2026-11-02 | Ubuntu 24.04.5 LTS / amd64 | WSL2の独立fixture・切替/復旧回帰、本番hostの新配置/health・サービス再起動後API/画面・採用実機 |
 | 更新候補020c35b | Linux arm64 | build/梱包のみ。実行再検証は今回は対象外・未検証 |
 | 旧候補cdd7ca2 / 2026-10-20 | Ubuntu 24.04.5 LTS / amd64・arm64、Ubuntu 26.04.1 LTS / amd64 | archiveからの新規設置・Picoなし起動・非送信CRUD/削除/保守読取り・サービス再起動後readback |
 
-旧候補のarm64/Ubuntu 26.04の成功を更新候補の検証済み表示に流用しません。他distribution・未確認kernelの動作も保証しません。文書を更新して再梱包した場合、binary/web/UF2の一致と設定例の整合を再検査し、archiveのchecksumはその梱包に対応するSHA256SUMSを使用します。新リポジトリ候補e7318deのbuild・梱包・ローカル検証は完了しました。公開対象の最終commit/tagとRelease公開は未確定です。本手順の今回の文書更新はe7318deのarchiveには未反映であり、更新後の梱包入力の照合・再梱包が必要です。公開は別の承認です。
+旧候補のarm64/Ubuntu 26.04の成功を更新候補の検証済み表示に流用しません。他distribution・未確認kernelの動作も保証しません。文書を更新して再梱包した場合、binary/web/UF2の一致と設定例の整合を再検査し、archiveのchecksumはその梱包に対応するSHA256SUMSを使用します。v1.0.0はbuild e7318de・再梱包65bff34をmain550adb5へ対応付けてRelease公開済みです。v1.0.1はGo更新を含む別候補として、clean commitからのbuild/梱包・checksum確認後に公開を判断します。
 
 対象PicoはPico 2 H（build board名pico2）。IR用の送受信回路が必要。RAW送信は現行38kHzのみ。UF2の書込み・家電の動作確認はManual only。Picoなしでもdaemon/Backendと通常APIは起動できるが、controller healthの成功やIR操作は保証しない。
 
 この手順はsource checkoutを使わない新規設置と、末尾の更新・復旧を扱う。旧配置からの移行は更新前に実効unit/config/socket/配信先と4 rootの対応を確定する。v0.11.0は過去snapshotに限った互換性記録であり、条件付きSchemaを含む現dataの一般的な復旧先として使わない。旧serviceと新unitを同じport/socketで同時起動しない。
 
-**以下のsudo、systemctl、Nginx反映、USB操作、実data設定は運用者が手動実行する。** MIT LICENSE・第三者noticeを含む両arch archive、独立UF2、SHA256SUMSのローカル候補を生成済みです。現候補/旧候補の確認範囲は上表を参照。GitHub Releaseは未公開であり、ローカル候補と一般download用の公開配布物を区別します。
+**以下のsudo、systemctl、Nginx反映、USB操作、実data設定は運用者が手動実行する。** v1.0.1の配布予定はMIT LICENSE・第三者noticeを含む両arch archive、独立UF2、SHA256SUMSです。以下の手順は同じ版・同じReleaseの配布物とSHA256SUMSを照合して実行します。旧候補の確認範囲は上表を参照してください。
 
 ## 1. 必要なソフトと配置
 
@@ -32,8 +33,8 @@ uname -m
 `x86_64`にはlinux-amd64、`aarch64`にはlinux-arm64のarchiveを使う。それ以外のarchへ流用しない。
 
 ```text
-/opt/web-controller/releases/v1.0.0/{bin,web,examples,INSTALL.md,LICENSE,THIRD_PARTY_NOTICES.md,VERSION}
-/opt/web-controller/current -> /opt/web-controller/releases/v1.0.0
+/opt/web-controller/releases/v1.0.1/{bin,web,examples,INSTALL.md,LICENSE,THIRD_PARTY_NOTICES.md,VERSION}
+/opt/web-controller/current -> /opt/web-controller/releases/v1.0.1
 /etc/web-controller/config.json
 /etc/systemd/system/web-controller-{backend,daemon}.service
 /etc/nginx/sites-available/web-controller.conf
@@ -44,16 +45,16 @@ uname -m
 
 ## 2. archive確認・展開（新規設置）
 
-対応archのarchiveと同じReleaseのSHA256SUMSをdownloadする。次のpathは実際のdownload先へ置き換える。別archや違う版のassetを混ぜない。次のblockは対象archiveのchecksumを検査し、一覧表示後に確認入力を待つ。最上位が`v1.0.0/`で想定fileのみを含み、絶対pathや`..`がないことを確認してから、端末で`expand`と入力する。それ以外の入力・入力失敗、checksum行の欠落・重複・不一致では停止し、展開しない。
+対応archのarchiveと同じReleaseのSHA256SUMSをdownloadする。次のpathは実際のdownload先へ置き換える。別archや違う版のassetを混ぜない。次のblockは対象archiveのchecksumを検査し、一覧表示後に確認入力を待つ。最上位が`v1.0.1/`で想定fileのみを含み、絶対pathや`..`がないことを確認してから、端末で`expand`と入力する。それ以外の入力・入力失敗、checksum行の欠落・重複・不一致では停止し、展開しない。
 
 ```bash
 (
   set -e
   cd /absolute/path/to/downloads
-  release_name=web-controller-v1.0.0-linux-amd64.tar.gz
+  release_name=web-controller-v1.0.1-linux-amd64.tar.gz
   # arm64環境では上のfilenameをlinux-arm64へ変更
   release_archive="$PWD/$release_name"
-  release_dir=/opt/web-controller/releases/v1.0.0
+  release_dir=/opt/web-controller/releases/v1.0.1
   test -f "$release_archive"
   archive_checksum=$(awk -v name="$release_name" \
     '$2 == name { print; found++ } END { if (found != 1) exit 1 }' SHA256SUMS)
@@ -74,7 +75,7 @@ uname -m
 )
 ```
 
-展開後はVERSIONが1.0.0で、bin/webが二重directoryの内側にないことを確認する。失敗時は途中の展開を勝手に消さず、既存配置・所有者・archive内容を確認する。
+展開後はVERSIONが1.0.1で、bin/webが二重directoryの内側にないことを確認する。失敗時は途中の展開を勝手に消さず、既存配置・所有者・archive内容を確認する。
 
 ## 3. service user・runtime/保守root
 

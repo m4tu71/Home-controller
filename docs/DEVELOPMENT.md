@@ -14,7 +14,7 @@ AI may run: read-only調査、ローカルbuild/test/lint、非破壊的なfile�
 
 | 対象 | 条件 |
 |---|---|
-| Go | 3 moduleのgo.mod宣言は1.22.2。宣言と依存を満たすtoolchain |
+| Go | 3 moduleのgo.mod宣言は1.27.3。1.27.3以上の保守対象toolchainを使い、標準ライブラリの脆弱性も検査する |
 | Frontend | lockfileのengine条件を満たすNode/npm。現在のjsdomはNode ^22.22.2 / ^24.15.0 / >=26.0.0。例えば24系なら24.15.0以上を選び、他依存の条件もlockで確認 |
 | Python | release toolsは3.9以上。実行版を記録 |
 | Pico host test | CMake 3.13以上、native C++17 compiler。SDK/ボード接続不要 |
@@ -76,6 +76,20 @@ build_output=$(mktemp -d /tmp/home-controller-dev.XXXXXX)
 ```
 
 module間のreplaceは隣接するconfigを参照します。単独moduleだけを別directoryへcopyしてbuildしません。競合/並行処理を変更した場合は対象Go testのrace確認、必要なvet等を追加します。buildしたbinaryをserviceの実行pathへ自動copyしません。
+
+Go標準ライブラリの脆弱性はnpm auditの対象外です。更新時は、実際に使う`go version`が上記条件を満たすことを確認し、
+準備済みの`govulncheck`で各moduleの解析を行います。tool導入・更新は依存更新の範囲として別途確認し、OS既定のGoを無断で置換しません。
+
+```bash
+# rootから。準備済みtoolchain/toolをPATHに設定して実行
+(cd config && govulncheck ./...)
+(cd backend && govulncheck ./...)
+(cd controller-daemon && govulncheck ./...)
+```
+
+配布するGOOS/GOARCHごとに解析し、生成binaryも`govulncheck -mode=binary /path/to/binary`で確認します。
+source解析とbinary解析は別に記録し、版だけの照会を到達可能性の検証として扱いません。
+
 
 Backend/daemonの実行には先頭の--configと正しい配置/権限が必要です。未指定で開発機の固定pathへfallbackする起動手順は使いません。隔離configと生成fixtureでの有限process検証は[RELEASING](RELEASING.md#配布候補の確認)を参照してください。
 
