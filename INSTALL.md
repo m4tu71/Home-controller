@@ -2,11 +2,12 @@
 
 ## 対象・検証状態
 
-本手順はv1.0.1候補の標準配置を扱います。正式archiveのbuild/梱包は未実施です。標準配置はLinux向けのsystemd/Nginx構成で、以下の表はv1.0.0以前の検証結果です。v1.0.1の設置済み・実機確認済みとして流用しません。
+本手順はv1.0.1候補の標準配置を扱います。候補5c173ceでclean build/梱包・監査とamd64隔離smokeまで確認しました。標準配置はLinux向けのsystemd/Nginx構成です。候補ごとの結果を区別し、生成・隔離検証を実設置や実機成功へ読み替えません。
 
 | 候補・確認日 | OS / architecture | 確認範囲 |
 |---|---|---|
-| 新リポジトリ候補e7318de / 2026-11-04 | Linux amd64・arm64 | clean build/梱包・ELF/UF2検査・checksum照合。amd64隔離smokeとoffline設置設定検査成功。実設置/Browser/家電は未確認、arm64実行再検証は対象外 |
+| v1.0.1候補5c173ce / 2026-11-05 | Linux amd64・arm64 | clean build/梱包・ELF/UF2・checksum、Go source/binary監査、設置設定検査成功。amd64隔離smoke6項目成功。実設置/Browser/家電は未確認、arm64実行再検証は対象外 |
+| v1.0.0候補e7318de / 2026-11-04 | Linux amd64・arm64 | clean build/梱包・ELF/UF2検査・checksum照合。amd64隔離smokeとoffline設置設定検査成功。実設置/Browser/家電は未確認、arm64実行再検証は対象外 |
 | 更新候補020c35b / 2026-11-02 | Ubuntu 24.04.5 LTS / amd64 | WSL2の独立fixture・切替/復旧回帰、本番hostの新配置/health・サービス再起動後API/画面・採用実機 |
 | 更新候補020c35b | Linux arm64 | build/梱包のみ。実行再検証は今回は対象外・未検証 |
 | 旧候補cdd7ca2 / 2026-10-20 | Ubuntu 24.04.5 LTS / amd64・arm64、Ubuntu 26.04.1 LTS / amd64 | archiveからの新規設置・Picoなし起動・非送信CRUD/削除/保守読取り・サービス再起動後readback |
@@ -17,7 +18,7 @@
 
 この手順はsource checkoutを使わない新規設置と、末尾の更新・復旧を扱う。旧配置からの移行は更新前に実効unit/config/socket/配信先と4 rootの対応を確定する。v0.11.0は過去snapshotに限った互換性記録であり、条件付きSchemaを含む現dataの一般的な復旧先として使わない。旧serviceと新unitを同じport/socketで同時起動しない。
 
-**以下のsudo、systemctl、Nginx反映、USB操作、実data設定は運用者が手動実行する。** v1.0.1の配布予定はMIT LICENSE・第三者noticeを含む両arch archive、独立UF2、SHA256SUMSです。以下の手順は正式候補生成後に同じ版・同じReleaseの配布物を使って実行します。旧候補の確認範囲は上表を参照してください。
+**以下のsudo、systemctl、Nginx反映、USB操作、実data設定は運用者が手動実行する。** v1.0.1の配布予定はMIT LICENSE・第三者noticeを含む両arch archive、独立UF2、SHA256SUMSです。以下の手順は同じ版・同じReleaseの配布物とSHA256SUMSを照合して実行します。旧候補の確認範囲は上表を参照してください。
 
 ## 1. 必要なソフトと配置
 

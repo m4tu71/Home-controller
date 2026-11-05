@@ -27,7 +27,7 @@ IRの送受信にはPicoと送受信回路が必要です。送信APIの成功�
 
 単一のローカル運用者を想定し、ユーザー認証は実装していません。認証なしAPIをインターネットへ直接公開しないでください。ECHONET Lite、Matter、スケジュール実行、高度な自動化、複数Picoの完全管理は未対応です。
 
-Linux amd64/arm64向けbuild・梱包に対応します。v1.0.1の正式候補build/梱包は未実施で、Go更新のローカル検証とは区別します。v1.0.0候補`e7318de`では両archの生成・検査とamd64の隔離smokeを確認しました。同候補の実設置・Browser・家電動作は未確認で、arm64実行再検証は今回対象外です。過去の更新候補020c35bはUbuntu 24.04 amd64で確認し、同候補arm64の実行再検証は未実施です。旧候補の結果を流用しません。採用実機のheat/dry運転、OS再起動・本番plan正常apply等の対象外と、auto内部mode/実測温度の未確認事項を含む詳細は[v1.0.0 Release notes](docs/releases/v1.0.0.md)を参照してください。過去候補の実績と新候補の確認範囲を区別します。
+Linux amd64/arm64向けbuild・梱包に対応します。v1.0.1候補`5c173ce`はclean build・Go/npm監査・梱包・amd64隔離smokeまで確認済みです。実設置・Browser・家電動作は未確認で、arm64実行再検証は今回対象外です。過去候補の実機結果やheat/dry運転等の対象外も含め、候補別の確認範囲は[v1.0.1 Release notes](docs/releases/v1.0.1.md)と[v1.0.0の記録](docs/releases/v1.0.0.md)を参照してください。
 
 RAW実行は現在38kHz、codeはPANASONIC_40に対応します。captureは`raw_samples`専用です。詳細は[HTTP API](docs/API.md)を参照してください。
 
